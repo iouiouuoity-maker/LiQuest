@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Ойын</title>
+
+<style>
+
+body{
+font-family:Poppins;
+background:#f5fbff;
+text-align:center;
+}
+
+.drag{
+background:#38bdf8;
+padding:10px;
+margin:10px;
+color:white;
+border-radius:6px;
+cursor:grab;
+}
+
+.drop{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Символдарды сәйкестендір</h1>
+
+<div class="drag" draggable="true" ondragstart="drag(event)" id="sea">Теңіз</div>
+<div class="drag" draggable="true" ondragstart="drag(event)" id="fish">Балық</div>
+
+<div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)">Өмір</div>
+<div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)">Мақсат</div>
+
+<script>
+
+function allowDrop(ev){
+ev.preventDefault();
+}
+
+function drag(ev){
+ev.dataTransfer.setData("text",ev.target.id);
+}
+
+function drop(ev){
+ev.preventDefault();
+var data=ev.dataTransfer.getData("text");
+ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+
+</body>
+</html>
